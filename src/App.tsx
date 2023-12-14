@@ -28,7 +28,7 @@ export default function Home() {
     },
   });
   const { enableVideo, isVideoOn, stream, disableVideo } = useLocalVideo();
-  const { enableAudio, isAudioOn } = useLocalAudio();
+  const { enableAudio, disableAudio, isAudioOn } = useLocalAudio();
   const { startScreenShare, stopScreenShare, shareStream } =
     useLocalScreenShare();
   const { updateMetadata } = useLocalPeer<TPeerMetadata>();
@@ -111,7 +111,7 @@ export default function Home() {
               <button
                 className="bg-blue-500 p-2 mx-2 rounded-lg"
                 onClick={async () => {
-                  isAudioOn ? await enableAudio() : await enableAudio();
+                  isAudioOn ? await disableAudio() : await enableAudio();
                 }}
               >
                 {isAudioOn ? 'Disable Audio' : 'Enable Audio'}
